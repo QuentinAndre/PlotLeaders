@@ -1,0 +1,17 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+
+<div class="row">
+    {% include "runtime/"+app_name+"/header.html" %}
+</div>
+<div class="ten columns">
+    {% include "runtime/"+app_name+"/main_pane.html" %}
+</div>
+<div class="row">
+    <div class="two columns">
+        {% include "runtime/"+app_name+"/controls.html" %}
+    </div>
+
+</div>
+
+{% endblock %}
