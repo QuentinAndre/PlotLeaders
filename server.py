@@ -1,3 +1,7 @@
+from gevent import monkey
+
+monkey.patch_all()
+
 from flask import Flask, render_template
 from flask.ext.socketio import SocketIO, emit
 import os
@@ -8,7 +12,6 @@ from plotleaders.components import element as el
 from plotleaders.components import graph
 from collections import OrderedDict
 from settings import APP_STATIC
-
 
 name = 'Plotleaders'
 app = Flask(name)
@@ -61,7 +64,8 @@ write_templates(
 def get_area(x_array, y_array):
     dist_x = max(x_array) - min(x_array)
     dist_y = max(y_array) - min(y_array)
-    return dist_x*dist_y
+    return dist_x * dist_y
+
 
 @app.route('/')
 def index():
@@ -118,7 +122,8 @@ def replot(app_state, data=data):
               }
     area = get_area(x_var, y_var)
     resize_js = "adjustSize({:.2f})".format(area)
-    div_content, js_content = plot_to_div({'data': trace, 'layout': layout}, plotdivid='PlotLeaders', added_js=resize_js)
+    div_content, js_content = plot_to_div({'data': trace, 'layout': layout}, plotdivid='PlotLeaders',
+                                          added_js=resize_js)
     print(div_content, js_content)
     message = json.dumps({'div_content': div_content, 'js_content': js_content})
     emit('postMessage', message)
