@@ -4,3 +4,4 @@ plotly
 gunicorn==18.0
 pandas
 numpy
+gevent
