@@ -9,6 +9,7 @@ from plotleaders.components import graph
 from collections import OrderedDict
 from settings import APP_STATIC
 
+
 name = 'Plotleaders'
 app = Flask(name)
 app.debug = True
