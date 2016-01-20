@@ -4,3 +4,4 @@ Flask-SocketIO
 plotly
 pandas
 numpy
+eventlet
