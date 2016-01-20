@@ -1,9 +1,7 @@
-from gevent import monkey
-
-monkey.patch_all()
 
 from flask import Flask, render_template, session, request
 from flask.ext.socketio import SocketIO, emit, join_room
+
 
 app = Flask(__name__)
 app.debug = True
@@ -30,4 +28,5 @@ def test_connect():
 
 
 if __name__ == '__main__':
+    print(socketio)
     socketio.run(app)
