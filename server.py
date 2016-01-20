@@ -1,4 +1,3 @@
-from gevent import monkey
 from flask import Flask, render_template
 from flask.ext.socketio import SocketIO, emit
 import os
@@ -9,8 +8,6 @@ from plotleaders.components import element as el
 from plotleaders.components import graph
 from collections import OrderedDict
 from settings import APP_STATIC
-
-monkey.patch_all()
 
 name = 'Plotleaders'
 app = Flask(name)
@@ -129,7 +126,4 @@ def replot(app_state, data=data):
 
 
 if __name__ == '__main__':
-    #socketio.run(app)
-    PORT = os.environ['PORT']
-    print("Gunicorn conf using port: " + PORT)
-    socketio.run(app, host='127.0.0.1', port=PORT, resource="socket.io", policy_server=False)
+    socketio.run(app)
