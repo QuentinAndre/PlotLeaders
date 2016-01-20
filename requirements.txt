@@ -4,6 +4,6 @@ Flask-SocketIO
 plotly
 pandas
 numpy
-
-greenlet==0.4.2
+gevent == 1.1rc3
+greenlet==0.4.9
 itsdangerous==0.23
