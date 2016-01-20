@@ -55,7 +55,7 @@ write_templates(
             'main_pane': [
                 graph()
             ]
-        }, name
+        }, __name__
 )
 
 
