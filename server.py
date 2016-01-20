@@ -129,4 +129,7 @@ def replot(app_state, data=data):
 
 
 if __name__ == '__main__':
-    socketio.run(app)
+    #socketio.run(app)
+    PORT = os.environ['PORT']
+    print("Gunicorn conf using port: " + PORT)
+    socketio.run(app, host='127.0.0.1', port=PORT, resource="socket.io", policy_server=False)
