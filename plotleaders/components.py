@@ -16,8 +16,8 @@ def write_controls(opts, opts_null):
             <div class="panel panel-success">
                 <div class="panel-heading">Using the App</div>
                 <div class="panel-body">
-                    Select the variables you want to appear on the horizontal axis and the
-                    vertical axis, and optionally the variable you want to use to color-code the leaders. <br><br>
+                    Select the variables you want to appear on the horizontal axis, the
+                    vertical axis, and the one you want to use to color-code the leaders. <br><br>
                     Once you are done, generate the plot by clicking the button, and zoom/pan on the map using your mouse!
                     <br><br>
                     <form>
