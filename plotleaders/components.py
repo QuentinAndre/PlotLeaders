@@ -34,7 +34,7 @@ def write_controls(opts, opts_null):
                             {zcontrols}
                         </div>
                         <div class="form-group">
-                            <label for='leadtype'> Leaders to Visualize </label>
+                            <label for='leadtype'> Leaders to Visualize: </label>
                             <label class="radio-inline"><input type="radio" name="leadtype" value="real">Real leaders</label>
                             <label class="radio-inline"><input type="radio" name="leadtype" value="fict">Fictitious leaders</label>
                             <label class="radio-inline"><input type="radio" name="leadtype" value="all">All leaders</label>
