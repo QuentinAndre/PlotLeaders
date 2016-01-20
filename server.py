@@ -1,7 +1,4 @@
 from gevent import monkey
-
-monkey.patch_all()
-
 from flask import Flask, render_template
 from flask.ext.socketio import SocketIO, emit
 import os
@@ -12,6 +9,8 @@ from plotleaders.components import element as el
 from plotleaders.components import graph
 from collections import OrderedDict
 from settings import APP_STATIC
+
+monkey.patch_all()
 
 name = 'Plotleaders'
 app = Flask(name)
@@ -130,4 +129,4 @@ def replot(app_state, data=data):
 
 
 if __name__ == '__main__':
-    socketio.run(app, port=9991, debug=True)
+    socketio.run(app)
