@@ -1,3 +1,6 @@
+from gevent import monkey
+monkey.patch_all()
+
 from flask import Flask, render_template
 from flask.ext.socketio import SocketIO, emit
 import os
@@ -125,5 +128,6 @@ def replot(app_state, data=data):
     emit('postMessage', message)
 
 
-if __name__ == '__main__':
-    socketio.run(app)
+if __name__ == "__main__":
+    # Fetch the environment variable (so it works on Heroku):
+    socketio.run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
