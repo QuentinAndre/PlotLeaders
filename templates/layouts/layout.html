@@ -1,14 +1,11 @@
-{% extends "layouts/base.html" %}
+{% extends "layouts/base_bootstrap.html" %}
 {% block content %}
 
 <div class="row">
-    {% include "runtime/"+app_name+"/header.html" %}
-</div>
-<div class="ten columns">
-    {% include "runtime/"+app_name+"/main_pane.html" %}
-</div>
-<div class="row">
-    <div class="two columns">
+    <div class="col-md-8">
+        {% include "runtime/"+app_name+"/main_pane.html" %}
+    </div>
+    <div class="col-md-4">
         {% include "runtime/"+app_name+"/controls.html" %}
     </div>
 
