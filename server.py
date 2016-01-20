@@ -7,7 +7,7 @@ import os
 import json
 import pandas as pd
 from plotleaders.utils import plot_to_div, write_templates
-from plotleaders.components import element as el
+from plotleaders.components import write_controls
 from plotleaders.components import graph
 from collections import OrderedDict
 from settings import APP_STATIC
@@ -28,29 +28,7 @@ opts_null["*NoVariable*"] = '*No Variable*'
 # Alternatively, include the HTML yourself in that folder
 write_templates(
         {
-            'header': [
-                el('H1', {}, 'Perception of Leaders')
-            ],
-
-            'controls': [
-                el('H3', {}, 'Plot Properties'),
-                el('label', {}, 'X-Axis'),
-                el('select', {
-                    'class': "u-full-width",
-                    'name': 'x-axis'
-                }, opt=opts),
-                el('label', {}, 'Y-axis'),
-                el('select', {
-                    'class': "u-full-width",
-                    'name': 'y-axis'
-                }, opt=opts),
-                el('label', {}, 'Z-axis (color)'),
-                el('select', {
-                    'class': "u-full-width",
-                    'name': 'z-axis'
-                }, opt=opts_null),
-                el('button', {'onclick': 'sendState({}, {})'}, 'Replot!', {})
-            ],
+            'controls': [write_controls(opts, opts_null)],
 
             'main_pane': [
                 graph()
@@ -130,3 +108,4 @@ def replot(app_state, data=data):
 if __name__ == "__main__":
     # Fetch the environment variable (so it works on Heroku):
     socketio.run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
+    #socketio.run(app)

@@ -1,3 +1,46 @@
+def write_controls(opts, opts_null):
+    x = element('select', {'class': "form-control", 'name': 'x-axis'}, opt=opts)
+    y = element('select', {'class': "form-control", 'name': 'y-axis'}, opt=opts)
+    z = element('select', {'class': "form-control", 'name': 'z-axis'}, opt=opts_null)
+    button = element('button', {'class': "btn btn-default", 'onclick': 'sendState({}, {})'}, 'View Plot!', {})
+    html = """
+            <div class="panel panel-info">
+                <div class="panel-heading">How it Works</div>
+                <div class="panel-body">
+                    We have surveyed several thousands of individuals in the U.S. and have asked them to rate the personality of real and fictitious leaders on several dimensions.
+                    </br>
+                    You can now visualize those results in the form of a perceptual map: who is the most benevolent leader? The least authoritarian?
+                </div>
+            </div>
+
+            <div class="panel panel-success">
+                <div class="panel-heading">Using the App</div>
+                <div class="panel-body">
+                    Using the options below, select the variable you want to appear on the horizontal axis, the
+                    vertical axis, and optionally the variable you want to use to color-code the leaders. <br>
+                    Once you are done, generate the plot by clicking the button, and zoom/pan on the map using your mouse!
+                    <br>
+                    <form>
+                        <div class="form-group">
+                            <label for='x-axis'> Horizontal Axis </label>
+                            {xcontrols}
+                        </div>
+                        <div class="form-group">
+                            <label for='y-axis'> Vertical Axis </label>
+                            {ycontrols}
+                        </div>
+                        <div class="form-group">
+                            <label for='z-axis'> Color-Coding </label>
+                            {zcontrols}
+                        </div>
+                    </form>
+                    {button}
+                </div>
+            </div>
+            """.format(xcontrols=x, ycontrols=y, zcontrols=z, button=button)
+    return html
+
+
 def element(element='div', attributes={}, content='', opt={}):
     if element in ['input', 'img']:
         is_closing = False
