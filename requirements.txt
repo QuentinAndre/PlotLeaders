@@ -5,4 +5,4 @@ plotly
 pandas
 numpy
 eventlet
-gevent
+gevent==1.1rc3
