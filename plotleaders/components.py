@@ -9,17 +9,17 @@ def write_controls(opts, opts_null):
                 <div class="panel-body">
                     We have surveyed several thousands of individuals in the U.S. and have asked them to rate the personality of real and fictitious leaders on several dimensions.
                     </br>
-                    You can now visualize those results in the form of a perceptual map: who is the most benevolent leader? The least authoritarian?
+                    You can now visualize those results in the form of a perceptual map. Who is the most benevolent leader? The least authoritarian? Check it out!
                 </div>
             </div>
 
             <div class="panel panel-success">
                 <div class="panel-heading">Using the App</div>
                 <div class="panel-body">
-                    Using the options below, select the variable you want to appear on the horizontal axis, the
-                    vertical axis, and optionally the variable you want to use to color-code the leaders. <br>
-                    Once you are done, generate the plot by clicking the button, and zoom/pan on the map using your mouse!
-                    <br>
+                    Select the variables you want to appear on the horizontal axis, the
+                    vertical axis, and the one you want to use to color-code the leaders. <br><br>
+                    Once you are done, generate the plot by clicking the button!
+                    <br><br>
                     <form>
                         <div class="form-group">
                             <label for='x-axis'> Horizontal Axis </label>
@@ -33,6 +33,13 @@ def write_controls(opts, opts_null):
                             <label for='z-axis'> Color-Coding </label>
                             {zcontrols}
                         </div>
+                        <div class="form-group">
+                            <label for='leadtype'> Leaders to Visualize </label>
+                            <label class="radio-inline"><input type="radio" name="leadtype" value="real">Real leaders</label>
+                            <label class="radio-inline"><input type="radio" name="leadtype" value="fict">Fictitious leaders</label>
+                            <label class="radio-inline"><input type="radio" name="leadtype" value="all">All leaders</label>
+                        </div>
+
                     </form>
                     {button}
                 </div>
