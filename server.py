@@ -68,7 +68,7 @@ def get_area(x_array, y_array):
 @app.route('/')
 def index():
     return render_template('layouts/layout.html',
-                           app_name=name)
+                           app_name=__name__)
 
 
 @socketio.on('replot')
