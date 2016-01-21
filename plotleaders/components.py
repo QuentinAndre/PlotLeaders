@@ -4,46 +4,42 @@ def write_controls(opts, opts_null):
     z = element('select', {'class': "form-control", 'name': 'z-axis'}, opt=opts_null)
     button = element('button', {'class': "btn btn-default", 'onclick': 'sendState({}, {})'}, 'View Plot!', {})
     html = """
-            <div class="panel panel-info">
-                <div class="panel-heading">How it Works</div>
-                <div class="panel-body">
-                    We have surveyed several thousands of individuals in the U.S. and have asked them to rate the personality of real and fictitious leaders on several dimensions.
-                    </br>
-                    You can now visualize those results in the form of a perceptual map. Who is the most benevolent leader? The least authoritarian? Check it out!
-                </div>
+    <form>
+        <div class="form-group">
+            <label for='x-axis'> Horizontal Axis </label>
+            {xcontrols}
+        </div>
+        <div class="form-group">
+            <label for='y-axis'> Vertical Axis </label>
+            {ycontrols}
+        </div>
+        <div class="form-group">
+            <label for='z-axis'> Color-Coding </label>
+            {zcontrols}
+        </div>
+        <div class="form-group">
+            <label for='leadtype'> Leaders to Include </label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="leadtype" value="real">
+                    Real leaders only
+                </label>
             </div>
-
-            <div class="panel panel-success">
-                <div class="panel-heading">Using the App</div>
-                <div class="panel-body">
-                    Select the variables you want to appear on the horizontal axis, the
-                    vertical axis, and the one you want to use to color-code the leaders. <br><br>
-                    Once you are done, generate the plot by clicking the button!
-                    <br><br>
-                    <form>
-                        <div class="form-group">
-                            <label for='x-axis'> Horizontal Axis </label>
-                            {xcontrols}
-                        </div>
-                        <div class="form-group">
-                            <label for='y-axis'> Vertical Axis </label>
-                            {ycontrols}
-                        </div>
-                        <div class="form-group">
-                            <label for='z-axis'> Color-Coding </label>
-                            {zcontrols}
-                        </div>
-                        <div class="form-group">
-                            <label for='leadtype'> Leaders to Visualize </label>
-                            <label class="radio-inline"><input type="radio" name="leadtype" value="real">Real leaders</label>
-                            <label class="radio-inline"><input type="radio" name="leadtype" value="fict">Fictitious leaders</label>
-                            <label class="radio-inline"><input type="radio" name="leadtype" value="all">All leaders</label>
-                        </div>
-
-                    </form>
-                    {button}
-                </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="leadtype" value="fict">
+                    Fictious leaders only
+                </label>
             </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="leadtype" value="both" checked>
+                    All leaders
+                </label>
+            </div>
+        </div>
+    </form>
+    {button}
             """.format(xcontrols=x, ycontrols=y, zcontrols=z, button=button)
     return html
 
@@ -64,8 +60,6 @@ def element(element='div', attributes={}, content='', opt={}):
     if element == "select" and opt == {}:
         raise Exception("No options given for element 'Select'")
 
-    content = content
-
     el = '<{}'.format(element)
     for attribute, value in attributes.items():
         el += ' {}="{}"'.format(attribute, value)
@@ -80,10 +74,3 @@ def element(element='div', attributes={}, content='', opt={}):
         el += '</{}>'.format(element)
 
     return el
-
-
-def graph():
-    return element('div', dict(
-            id="plot_content",
-            style="width: 100%; height: 600px; border: none;"
-    ))

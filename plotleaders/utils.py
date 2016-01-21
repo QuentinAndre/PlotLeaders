@@ -5,8 +5,14 @@ import uuid
 from plotly import tools, utils
 
 
+def get_area(x_array, y_array):
+    dist_x = max(x_array) - min(x_array)
+    dist_y = max(y_array) - min(y_array)
+    return dist_x * dist_y
+
+
 def write_templates(blocks, app_name):
-    runtime_template_dir = os.path.join('templates', 'runtime', app_name)
+    runtime_template_dir = os.path.join(app_name, 'templates', 'runtime')
     if not os.path.exists(runtime_template_dir):
         os.makedirs(runtime_template_dir)
 
