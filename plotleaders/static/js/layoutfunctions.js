@@ -5,7 +5,6 @@ $(document).ready(function () {
         if (obj.type === "checkbox" || obj.type === "radio") {
             $(obj).change(function () {
                 console.log(getState());
-                sendState({}, {});
             });
         } else {
             obj.oninput = function () {
@@ -13,7 +12,6 @@ $(document).ready(function () {
                     $('output[for=' + obj.name + ']')[0].value = obj.value;
                 }
                 console.log(getState());
-                sendState({}, {});
             };
         }
     });
