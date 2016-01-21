@@ -11,8 +11,11 @@ import os
 import pandas as pd
 
 
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_pyfile('config.py')
+app = Flask(__name__)
+DEBUG = True
+SECRET_KEY = "devkey"
+USERNAME = "admin"
+PASSWORD = "default"
 socketio = SocketIO(app)
 data = pd.read_csv(os.path.join(os.path.dirname(__file__), 'static', 'dataleaders.csv'))
 
