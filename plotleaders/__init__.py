@@ -12,10 +12,10 @@ import pandas as pd
 
 
 app = Flask(__name__)
-DEBUG = True
-SECRET_KEY = "devkey"
-USERNAME = "admin"
-PASSWORD = "default"
+#DEBUG = False
+#SECRET_KEY = "devkey"
+#USERNAME = "admin"
+#PASSWORD = "default"
 socketio = SocketIO(app)
 data = pd.read_csv(os.path.join(os.path.dirname(__file__), 'static', 'dataleaders.csv'))
 

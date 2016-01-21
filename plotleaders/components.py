@@ -28,7 +28,7 @@ def write_controls(opts, opts_null):
             <div class="radio">
                 <label>
                     <input type="radio" name="leadtype" value="fict">
-                    Fictious leaders only
+                    Fictitious leaders only
                 </label>
             </div>
             <div class="radio">
