@@ -42,8 +42,18 @@ code {
     width: 100%;
 }
 
+.checkbox-inline.no_indent,
+.checkbox-inline.no_indent+.checkbox-inline.no_indent {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.checkbox-inline.no_indent:last-child {
+  margin-right: 0;
+}
+
 .vcenter {
     display: inline-block;
     vertical-align: middle;
     float: none;
+    margin-right: -4px;
 }

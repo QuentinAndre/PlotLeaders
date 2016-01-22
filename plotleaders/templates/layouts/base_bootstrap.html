@@ -9,11 +9,20 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href={{ url_for("static", filename="css/bootstrap3.css") }} type="text/css">
+    <!-- CDN FOR JAVASCRIPT AND CSS. COMMENT TO RUN FROM HEROKU -->
+    <link rel="stylesheet" href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css">
+    <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.3.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- LOCAL JAVASCRIPT AND CSS. UNCOMMENT TO RUN FROM LOCAL ONLY.
+    <link rel="stylesheet" href={{ url_for("static", filename="css/localcopies/bootstrap.min.css") }} type="text/css">
+    <script type="text/javascript" src={{ url_for("static", filename="js/localcopies/plotly-latest.min.js") }}></script>
+    <script type="text/javascript" src={{ url_for("static", filename="js/localcopies/jquery-1.10.2.js") }}></script>
+    <script type="text/javascript" src={{ url_for("static", filename="js/localcopies/socket.io.min.js") }}></script>
+    -->
+
     <link rel='stylesheet' href={{ url_for("static", filename="css/fonts.css") }} type='text/css'>
-    <script type="text/javascript" src={{ url_for("static", filename="js/plotly-latest.min.js") }}></script>
-    <script type="text/javascript" src={{ url_for("static", filename="js/jquery-1.10.2.js") }}></script>
-    <script type="text/javascript" src={{ url_for("static", filename="js/socket.io.min.js") }}></script>
     <script type="text/javascript" src={{ url_for("static", filename="js/layoutfunctions.js") }}></script>
     <script type="text/javascript" src={{ url_for("static", filename="js/socket-init.js") }}></script>
     <title>Perception of Leaders</title>

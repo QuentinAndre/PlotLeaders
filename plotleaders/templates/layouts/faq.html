@@ -6,73 +6,105 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8 text-justify">
-        <u><h3>Frequently Asked Questions</h3></u>
-        <br>
-        <h4> What is this?</h4>
-        On this website, you will learn more on the way Americans view leadership figures: who do they name when asked
-        about leaders? Which qualities do they see in those leaders? Who is seen as the most authoritarian leader? The most
-        aspirational? The least benevolent? Use our app to view the results! <br><br>
+        <div class="panel panel-success">
+            <div class="panel-heading">What is this?</div>
+            <div class="panel-body">
+                On this website, you will learn more about the way people view leaders: who comes to their mind?
+                Which qualities do they see in those leaders? Who is seen as the most authoritarian leader? The most
+                aspirational? The least benevolent? Use our app to view the results!
+            </div>
+        </div>
     </div>
     <div class="col-md-2"></div>
 </div>
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8 text-justify">
-        <h4>How does it work?</h4>
-        You can use our app to generate perceptual maps of leaders:
-        <ol>
-            <li>Pick one variable to view on the horizontal axis.</li>
-            <li>Pick a second one to view on the vertical axis.</li>
-            <li>Optionally, pick a third one to color-code the leaders.</li>
-            <li>Finally, you can also decide whether you want to view all leaders on the map, only the real ones, or
-                only the fictitious characters.</li>
-        </ol>
-        You can then zoom by drawing a rectangle on the portion of the graph you want to have a closer look at, and double-click
-        to reset the zoom level.
-    </div>
-    <div class="col-md-2"></div>
-</div>
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-3 text-justify">
-        <br>
-        <br>
-        <br>
-        <br>
-        <b>In this example graph:</b>
-        <ul>
-            <li>The leaders in the left part (right part) of the graph are the least (most) authoritarian.</li>
-            <li>The leaders in the lower part (upper part) of the graph are the least (most) competent.</li>
-            <li>The leaders represented by blue dots (red dots) are least (most) trustworthy.</li>
-        </ul>
-    </div>
-    <div class="col-md-5 text-justify"><img id="example-plot" src={{ url_for('static', filename="example_plot.png") }}></img></div>
-    <div class="col-md-2"></div>
-</div>
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8 text-justify">
-        <h4>What about the data?</h4>
-        We have collected the data presented here in two waves. First, we have asked one group of American citizens
-        to name people and characters who they view as leaders. They could nominate both real and fictional persons, and
-        obtained from them a list of leaders.
-        We then asked a second group of respondents to rate those leaders on a certain number of psychological traits:
-        authority, benevolence, warmth, competence, etc... So far, 2500 persons have helped us rate those leaders! <br><br>
+        <div class="panel panel-info">
+            <div class="panel-heading">How does it work?</div>
+            <div class="panel-body">
+                You can use our app to generate perceptual maps of leaders:
+                <ol>
+                    <li>Pick one variable to view on the horizontal axis.</li>
+                    <li>Pick a second one to view on the vertical axis.</li>
+                    <li>Optionally, pick a third one to color-code the leaders.</li>
+                    <li>Finally, you can decide on the types of leaders you want to see: politician, celebrities...</li>
+                </ol>
+                You can then zoom by drawing a rectangle on the portion of the graph you want to have a closer look at,
+                and double-click
+                to reset the zoom level.
+            </div>
+        </div>
     </div>
     <div class="col-md-2"></div>
 </div>
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8 text-justify">
-        <h4>Who is behind this project?</h4>
-        We are Quentin Andre (PhD Candidate in Marketing) and David Dubois (Assistant Professor of Marketing), from INSEAD
-        Business School (France). The studies were designed by Quentin and David, and the coding and design of the application
-        was done by Quentin using <a href="http://flask.pocoo.org/">Flask</a>, <a href="https://plot.ly/">Plotly</a>, and
-        <a href="http://http://getbootstrap.com/">Bootstrap</a>.
-        <br>
-        <br>
+        <div class="panel panel-success">
+            <div class="panel-heading">Show me an example!</div>
+            <div class="panel-body">
+                <div class="row outer">
+                    <div class="col-md-3 vcenter">
+                        <div>
+                            The leaders in the left part (right part) of the graph are the least (most)
+                            authoritarian.<br><br>
+                            The leaders in the lower part (upper part) of the graph are the least (most)
+                            competent.<br><br>
+                            The leaders represented by blue dots (red dots) are most (least) trustworthy.
+                        </div>
+                    </div><!--
+    -->
+                    <div class="col-md-9 vcenter">
+                        <div>
+                            <img id="example-plot" src={{ url_for('static', filename="example_plot.png")}}></img>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-md-2"></div>
 </div>
-
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-justify">
+        <div class="panel panel-info">
+            <div class="panel-heading">What about the data?</div>
+            <div class="panel-body">
+                We have collected the data presented here in two waves:
+                <ol>
+                    <li>First, we have asked one group of respondents
+                        to name people and characters who they view as leaders.
+                    </li>
+                    <li>We then asked a second group of respondents to rate those leaders on a certain number of
+                        psychological
+                        traits: authority, benevolence, warmth, competence, etc...
+                    </li>
+                </ol>
+                So far, 2500 persons have helped us rate those
+                leaders, thank you to each of them!
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-justify">
+        <div class="panel panel-success">
+            <div class="panel-heading">Who is behind this project?</div>
+            <div class="panel-body">
+                Quentin Andre (PhD Candidate in Marketing)
+                and <a href="https://www.insead.edu/facultyresearch/faculty/profiles/ddubois/">David Dubois</a>
+                (Assistant Professor of Marketing), from INSEAD Business School (France).
+                The studies were designed by Quentin and David, and the coding and design of the application
+                was done by Quentin using <a href="http://flask.pocoo.org/">Flask</a>, <a
+                    href="https://plot.ly/">Plotly</a>,
+                and <a href="http://http://getbootstrap.com/">Bootstrap</a>.
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
 {% endblock %}

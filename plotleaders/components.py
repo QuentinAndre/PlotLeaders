@@ -1,8 +1,9 @@
-def write_controls(opts, opts_null):
+def write_controls(cats, opts, opts_null):
     x = element('select', {'class': "form-control", 'name': 'x-axis'}, opt=opts)
     y = element('select', {'class': "form-control", 'name': 'y-axis'}, opt=opts)
     z = element('select', {'class': "form-control", 'name': 'z-axis'}, opt=opts_null)
     button = element('button', {'class': "btn btn-default", 'onclick': 'sendState({}, {})'}, 'View Plot!', {})
+    categories = write_categories(cats)
     html = """
     <form>
         <div class="form-group">
@@ -18,29 +19,25 @@ def write_controls(opts, opts_null):
             {zcontrols}
         </div>
         <div class="form-group">
-            <label for='leadtype'> Leaders to Include </label>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="leadtype" value="real">
-                    Real leaders only
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="leadtype" value="fict">
-                    Fictitious leaders only
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="leadtype" value="both" checked>
-                    All leaders
-                </label>
-            </div>
+            <label for='leadtype'> Leader Types to Include </label><br>
+            {categories}
         </div>
     </form>
     {button}
-            """.format(xcontrols=x, ycontrols=y, zcontrols=z, button=button)
+            """.format(xcontrols=x, ycontrols=y, zcontrols=z, button=button, categories=categories)
+    return html
+
+def write_categories(cats):
+    base = """
+            <label class="checkbox-inline no_indent">
+                <input type="checkbox" name="{}" value="1" checked>
+                {}
+            </label>
+            """
+    html = ""
+    for c in cats:
+        html += base.format(c, c)
+
     return html
 
 

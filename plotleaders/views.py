@@ -1,4 +1,4 @@
-from plotleaders import app, socketio, data
+from plotleaders import app, socketio, data, cats
 from flask import render_template, url_for
 from flask.ext.socketio import emit
 import json
@@ -23,13 +23,8 @@ def survey():
 
 @socketio.on('replot')
 def replot(app_state, data=data):
-    scope = app_state['leadtype']
-    if scope == "both":
-        d = data
-    elif scope == "real":
-        d = data[data["Type"] == "Real"]
-    else:
-        d = data[data["Type"] == "Fictitious"]
+    scope = [c for c in cats if app_state[c]]
+    d = data[data["DetailedType"].isin(scope)]
     x_var = d[app_state['x-axis']]
     y_var = d[app_state['y-axis']]
     if app_state['z-axis'] == '*NoVariable*':
@@ -37,7 +32,7 @@ def replot(app_state, data=data):
         title = ""
     else:
         z_var = d[app_state['z-axis']]
-        title = "Blue: Least {}, Red: Most {}".format(app_state['z-axis'], app_state['z-axis'])
+        title = "Red: Least {}, Blue: Most {}".format(app_state['z-axis'], app_state['z-axis'])
     x_lims = [min(x_var) - 0.5, max(x_var) + 0.5]
     y_lims = [min(y_var) - 0.5, max(y_var) + 0.5]
     text = d["Leader Name"]
@@ -49,7 +44,12 @@ def replot(app_state, data=data):
         'mode': 'markers+text',
         'marker': {'color': z_var,
                    'size': 8,
-                   'colorscale': 'Bluered'},
+                   'colorscale': [[0, "#B92732"], [0.5, "#DDDCDB"], [1, "#2971B1"]],
+                   'line': {
+                       'width': 0.5,
+                       'color': 'black'
+                   }
+                   },
         'hoverinfo': 'text',
         'textfont': {'size': 8},
         'textposition': 'top'

@@ -19,7 +19,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 data = pd.read_csv(os.path.join(os.path.dirname(__file__), 'static', 'dataleaders.csv'))
 
-var_leaders = data.columns[1:]
+var_leaders = data.columns[1:11]
 opts = OrderedDict()
 for x in sorted(var_leaders):
     opts[x] = x
@@ -27,10 +27,12 @@ for x in sorted(var_leaders):
 opts_null = opts.copy()
 opts_null["*NoVariable*"] = '*No Variable*'
 
+cats = data["DetailedType"].unique()
+
 write_templates(
         {
             'controls': [
-                write_controls(opts, opts_null)
+                write_controls(cats, opts, opts_null)
             ]
         }, __name__
 )
