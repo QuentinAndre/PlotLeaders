@@ -1,23 +1,38 @@
-<!doctype html>
+{% set navigation_bar = [
+    ('/', 'home', 'The App'),
+    ('/faq/', 'faq', 'FAQ'),
+    ('/survey/', 'survey', 'Take the Survey!')
+] -%}
+
+{% set active_page = active_page|default('home') -%}
+
 <html>
 
 <head>
-    <link rel="stylesheet" href='static/css/bootstrap3.css' type='text/css'>
-    <link rel='stylesheet' href='static/css/fonts.css' type='text/css'>
-    <script type="text/javascript" src="static/js/plotly-latest.min.js"></script>
-    <script type="text/javascript" src="static/js/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="static/js/socket.io.min.js"></script>
-    <script type="text/javascript" src="static/js/layoutfunctions.js"></script>
-    <script type="text/javascript" src="static/js/socket-init.js"></script>
+    <link rel="stylesheet" href={{ url_for("static", filename="css/bootstrap3.css") }} type="text/css">
+    <link rel='stylesheet' href={{ url_for("static", filename="css/fonts.css") }} type='text/css'>
+    <script type="text/javascript" src={{ url_for("static", filename="js/plotly-latest.min.js") }}></script>
+    <script type="text/javascript" src={{ url_for("static", filename="js/jquery-1.10.2.js") }}></script>
+    <script type="text/javascript" src={{ url_for("static", filename="js/socket.io.min.js") }}></script>
+    <script type="text/javascript" src={{ url_for("static", filename="js/layoutfunctions.js") }}></script>
+    <script type="text/javascript" src={{ url_for("static", filename="js/socket-init.js") }}></script>
+    <title>Perception of Leaders</title>
 </head>
 
 <body>
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="container-fluid">
+    <div class="container">
         <div class="navbar-header">
-            <h3>Perceptions of Leaders<br>
+            <h3>Perceptions of Leaders
                 <small> A project by Quentin Andre and David Dubois, INSEAD Business School</small>
             </h3>
+            <ul class="nav nav-tabs">
+                {% for href, id, caption in navigation_bar %}
+                <li role="presentation" {% if id == active_page %} class="active"{% endif %}>
+                    <a href="{{ href|e }}">{{ caption|e }}</a>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </nav>
@@ -26,7 +41,7 @@
 </div>
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">Powered by Python, Flask, and Plotly.</p>
+        <p class="text-muted">Designed by Quentin Andre, powered by Python, Flask, Bootstrap, and Plotly. </p>
     </div>
 </footer>
 </body>
