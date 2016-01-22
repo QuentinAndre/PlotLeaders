@@ -1,7 +1,6 @@
 import os
 import plotly
 import json
-import uuid
 from plotly import tools, utils
 
 
@@ -45,8 +44,6 @@ def plot_to_div(figure_or_data, validate=True, show_link=True, plotdivid='', add
     else:
         height = str(height) + 'px'
 
-    if plotdivid == '':
-        plotdivid = uuid.uuid4()
     jdata = json.dumps(figure.get('data', []), cls=utils.PlotlyJSONEncoder)
     jlayout = json.dumps(figure.get('layout', {}), cls=utils.PlotlyJSONEncoder)
 
@@ -54,15 +51,7 @@ def plot_to_div(figure_or_data, validate=True, show_link=True, plotdivid='', add
     config['showLink'] = show_link
     config['linkText'] = link_text
     jconfig = json.dumps(config)
-
-    plotly_platform_url = plotly.plotly.get_config().get('plotly_domain',
-                                                         'https://plot.ly')
-    if (plotly_platform_url != 'https://plot.ly' and
-                link_text == 'Export to plot.ly'):
-        link_domain = plotly_platform_url \
-            .replace('https://', '') \
-            .replace('http://', '')
-        link_text = link_text.replace('plot.ly', link_domain)
+    plotly_platform_url = 'https://plot.ly'
 
     script = 'Plotly.newPlot("{id}", {data}, {layout}, {config})'.format(
             id=plotdivid,
