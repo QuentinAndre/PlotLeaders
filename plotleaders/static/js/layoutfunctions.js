@@ -2,19 +2,12 @@ $(document).ready(function () {
 
     // Record and send the state when inputs change
     $('input, select').each(function (i, obj) {
-        if (obj.type === "checkbox" || obj.type === "radio") {
-            $(obj).change(function () {
-                console.log(getState());
-            });
-        } else {
-            obj.oninput = function () {
-                if ($(obj).hasClass("show-output")) {
-                    $('output[for=' + obj.name + ']')[0].value = obj.value;
-                }
-                console.log(getState());
-            };
-        }
+        $(obj).change(function () {
+            console.log(getState());
+            sendState({}, {});
+        });
     });
+    sendState({}, {});
 });
 
 function getState(payload) {

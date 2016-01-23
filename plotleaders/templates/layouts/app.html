@@ -1,4 +1,4 @@
-{% extends "layouts/base_bootstrap.html" %}
+{% extends "layouts/base.html" %}
 {% set active_page = "home" %}
 
 {% block content %}
@@ -15,6 +15,12 @@
             </div>
         </div>
         <div class="panel panel-info">
+            <div class="panel-heading">What do YOU think?</div>
+            <div class="panel-body">
+                Want to tell us about your leaders? <a href="http://insead.qualtrics.com/SE/?SID=SV_eh5wk837I9P1A9v">Do the survey now!</a>
+            </div>
+        </div>
+        <div class="panel panel-success">
             <div class="panel-heading">About the App</div>
             <div class="panel-body">
                 Do you want more information? Have a look at the <a href={{ url_for('faq') }}>FAQ</a>!
