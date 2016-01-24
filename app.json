@@ -1,6 +1,6 @@
 {
     "name": "Plot-Leaders",
-    "description": "A minimalist vizualization app built with Plotly, Flask, and SocketIO",
-    "respository": "https://github.com/chriddyp/dash",
+    "description": "A minimalist visualization app built with Plotly, Flask, SocketIO, and Bootstrap.",
+    "repository": "https://github.com/QuentinAndre/Plotleaders",
     "keywords": ["python", "webapp", "visualization", "plotly"]
 }

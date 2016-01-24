@@ -5,10 +5,10 @@ from plotly import tools, utils
 def write_controls(cats, opts, opts_null):
     """
     Write the controls to the main page app.
-    :param cats:
-    :param opts:
-    :param opts_null:
-    :return:
+    :param cats: list
+    :param opts: list
+    :param opts_null: list
+    :return: string
     """
     x = element('select', {'class': "form-control", 'name': 'x-axis'}, opt=opts, select_id=0)
     y = element('select', {'class': "form-control", 'name': 'y-axis'}, opt=opts, select_id=1)
@@ -39,8 +39,8 @@ def write_controls(cats, opts, opts_null):
 def write_categories(cats):
     """
     Write the categories of leaders as radio button, and return the corresponding html
-    :param cats:
-    :return:
+    :param cats: list
+    :return: string
     """
     base = """
             <label class="checkbox-inline no_indent">
@@ -57,11 +57,11 @@ def write_categories(cats):
 def element(element='div', attributes={}, content='', opt={}, select_id=0):
     """
     Utility function to write HTML elements conveniently
-    :param element:
-    :param attributes:
-    :param content:
-    :param opt:
-    :param select_id:
+    :param element: string
+    :param attributes: dict
+    :param content: string
+    :param opt: dict
+    :param select_id: int
     :return:
     """
     if element in ['input', 'img']:
@@ -100,9 +100,9 @@ def element(element='div', attributes={}, content='', opt={}, select_id=0):
 def get_area(x_array, y_array):
     """
     Compute the area of the plot generated from the data specified in x_array and y_array
-    :param x_array:
-    :param y_array:
-    :return:
+    :param x_array: list
+    :param y_array: list
+    :return: float
     """
     dist_x = max(x_array) - min(x_array)
     dist_y = max(y_array) - min(y_array)
@@ -111,10 +111,10 @@ def get_area(x_array, y_array):
 
 def write_templates(blocks, app_name):
     """
-    Write the templates in a runtime folder to speed up the app.
-    :param blocks:
-    :param app_name:
-    :return:
+    Utility function: write templates from corresponding blocks, and save them in the runtime folder of the app.
+    :param blocks: dict
+    :param app_name: string
+    :return: None
     """
     runtime_template_dir = os.path.join(app_name, 'templates', 'runtime')
     if not os.path.exists(runtime_template_dir):
@@ -126,23 +126,20 @@ def write_templates(blocks, app_name):
         with open(runtime_template_block, 'w') as f:
             template = '\n'.join(blocks[block])
             f.write(template)
+    return None
 
 
-def plot_to_div(figure_or_data, validate=True, show_link=True, plotdivid='', added_js='', link_text="View on plot.ly",
-                default_width='100%', default_height='100%'):
+def plot_to_div(figure_or_data, plotdivid='', added_js='',  default_width='100%', default_height='100%'):
     """
     Generate the Plotly plot, and return the HTML and Javascript needed to generate the plot.
-    :param figure_or_data:
-    :param validate:
-    :param show_link:
-    :param plotdivid:
-    :param added_js:
-    :param link_text:
-    :param default_width:
-    :param default_height:
-    :return:
+    :param figure_or_data: dict
+    :param plotdivid: string
+    :param added_js: bool
+    :param default_width: string
+    :param default_height: string
+    :return: tuple
     """
-    figure = tools.return_figure_from_figure_or_data(figure_or_data, validate)
+    figure = tools.return_figure_from_figure_or_data(figure_or_data, validate_figure=True)
 
     width = figure.get('layout', {}).get('width', default_width)
     height = figure.get('layout', {}).get('height', default_height)
@@ -165,8 +162,8 @@ def plot_to_div(figure_or_data, validate=True, show_link=True, plotdivid='', add
     jlayout = json.dumps(figure.get('layout', {}), cls=utils.PlotlyJSONEncoder)
 
     config = {}
-    config['showLink'] = show_link
-    config['linkText'] = link_text
+    config['showLink'] = True
+    config['linkText'] = "View on plot.ly"
     jconfig = json.dumps(config)
     plotly_platform_url = 'https://plot.ly'
 
