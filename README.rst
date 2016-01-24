@@ -1,7 +1,7 @@
 .. highlight:: sh
-==============
+=============
  Introduction
-==============
+=============
 
 :Date: January 24, 2016
 :Version: 1.0.0
